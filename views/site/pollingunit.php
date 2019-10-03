@@ -8,12 +8,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'Polling Unit';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
+        <div class="jumbotron">
+            <p class="lead">Page to use to store result for all parties for a new polling unit</p>
+        </div>
         <div class="row">
             <div class="col-lg-5">
 

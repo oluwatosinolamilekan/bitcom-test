@@ -146,8 +146,7 @@ class SiteController extends Controller
     {
         $model = new PollingUnit();
         if ($model->load(Yii::$app->request->post() )) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+            //Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
         
@@ -156,7 +155,7 @@ class SiteController extends Controller
             ->select(['lga.lga_id','lga.state_id','lga.lga_name','polling_unit.polling_unit_id'])
             ->where(['polling_unit.polling_unit_id'=> null])
             ->all();
-            
+
         return $this->render('pollingunit', [
             'model' => $model,
             'category' =>  $category
