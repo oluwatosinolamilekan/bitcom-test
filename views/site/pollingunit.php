@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 $this->title = 'Polling Unit';
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,6 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?php $form = ActiveForm::begin(); ?>
 
+                <?= $form->field($model, 'lga_id')->dropDownList(
+                        ArrayHelper::map($category, 'lga_id', 'lga_name')
+                ) ?>
                     <?= $form->field($model, 'polling_unit_number')->textInput(['autofocus' => true]) ?>
 
                     <?= $form->field($model, 'polling_unit_name')->textInput(['autofocus' => true])  ?>

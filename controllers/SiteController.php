@@ -150,7 +150,28 @@ class SiteController extends Controller
 
             return $this->refresh();
         }
-        return $this->render('pollingunit', ['model' => $model]);
+        // $rows = (new \yii\db\Query())
+        // ->from('lga')
+        // ->where(['polling_unit_name' => ''])
+        // ->all();
+        return $this->render('pollingunit', [
+            'model' => $model,
+            'category' =>  (new \yii\db\Query())->from('lga')->select(['lga_id','state_id','lga_name'])->all(),
+        ]);
+    }
+
+    public function actionView($id)
+    {
+        $rows = (new \yii\db\Query())->from('polling_unit')->findOne($id);
+        // if ($rows === null) {
+        //     throw new NotFoundHttpException;
+        // }
+
+        // return json_encode($rows);
+        return $this->render('show', [
+            'rows' => $rows,
+            // 'category' => Category::find()->all(),
+        ]);
     }
 
     /**
