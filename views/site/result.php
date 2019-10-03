@@ -16,8 +16,8 @@
 
         <div class="row">
             <ul class="list-group">
-                <?php foreach ($rows as $row) { ?>
-                    <li class='list-group-item'><?= $row['lga_name'] ?> <span class='badge'><?= $row['uniquewardid'] ?></span></li>
+                <?php foreach ($results as $row) { ?>
+                    <li class='list-group-item'><?= $row['party_abbreviation'] ?> <span class='badge'><?= $row['party_score'] ?></span></li>
                 <?php } ?>
                 
             </ul>

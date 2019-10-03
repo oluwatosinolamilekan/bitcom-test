@@ -146,7 +146,6 @@ class SiteController extends Controller
     {
         $model = new PollingUnit();
         if ($model->load(Yii::$app->request->post() )) {
-            //Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
         
@@ -159,6 +158,17 @@ class SiteController extends Controller
         return $this->render('pollingunit', [
             'model' => $model,
             'category' =>  $category
+        ]);
+    }
+
+    public function actionLgaresult()
+    {
+        $results =  (new \yii\db\Query())->from('announced_pu_results')
+        ->select(['result_id','party_abbreviation','party_score'])
+        ->orderBy(['date_entered'=>SORT_DESC])
+        ->all();
+        return $this->render('result', [
+            'results' =>  $results
         ]);
     }
 

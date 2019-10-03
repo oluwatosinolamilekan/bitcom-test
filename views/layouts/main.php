@@ -39,7 +39,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            // ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Result', 'url' => ['/site/lgaresult']],
             ['label' => 'Polling Unit', 'url' => ['/site/polling']],
             
         ],
