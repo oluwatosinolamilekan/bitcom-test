@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\PollingUnit;
 use yii\helpers\Url;
 class SiteController extends Controller
 {
@@ -68,7 +69,18 @@ class SiteController extends Controller
         ->from('lga')
         // ->distinct()
         ->all();
-        // return json_encode($rows);
+        return $this->render('index',compact('rows'));
+    }
+
+    public function display_new_polling_unit()
+    {
+        $rows = (new \yii\db\Query())
+        ->from('lga')
+        ->where(['polling_unit_name' => ''])
+
+
+        // ->distinct()
+        ->all();
         return $this->render('index',compact('rows'));
     }
 
@@ -120,6 +132,25 @@ class SiteController extends Controller
             return $this->refresh();
         }
         return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * store result for all new
+     * polling unit
+     *
+     * @return Response|string
+     */
+    public function store_new_polling_unit()
+    {
+        $model = new PollingUnit();
+        if ($model->load(Yii::$app->request->post() )) {
+            Yii::$app->session->setFlash('Polling Unit Created Succesfully');
+
+            return $this->refresh();
+        }
+        return $this->render('pollingunit', [
             'model' => $model,
         ]);
     }
