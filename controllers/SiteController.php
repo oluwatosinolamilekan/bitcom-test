@@ -142,17 +142,15 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function store_new_polling_unit()
+    public function actionPolling()
     {
         $model = new PollingUnit();
         if ($model->load(Yii::$app->request->post() )) {
-            Yii::$app->session->setFlash('Polling Unit Created Succesfully');
+            Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
         }
-        return $this->render('pollingunit', [
-            'model' => $model,
-        ]);
+        return $this->render('pollingunit', ['model' => $model]);
     }
 
     /**

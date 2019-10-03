@@ -45,14 +45,11 @@ $config = [
         'db' => $db,
         
         'urlManager' => [
-            'class' => 'yii\web\UrlManager', //added by myself
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                // '<controller:(post|comment)>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<controller:\w+>/<id:\d+>/<slug:\w+>' => '<controller>/inec',
-
+                // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                // '<controller:\w+>/<id:\d+>/<slug:\w+>' => '<controller>/inec',
             ],
         ],
         

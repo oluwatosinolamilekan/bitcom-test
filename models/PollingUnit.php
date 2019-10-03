@@ -8,7 +8,7 @@ use yii\base\Model;
 /**
  * ContactForm is the model behind the contact form.
  */
-class ContactForm extends Model
+class PollingUnit extends Model
 {
     public $polling_unit_id;
     public $ward_id;
