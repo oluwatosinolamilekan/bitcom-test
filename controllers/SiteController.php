@@ -150,13 +150,16 @@ class SiteController extends Controller
 
             return $this->refresh();
         }
-        // $rows = (new \yii\db\Query())
-        // ->from('lga')
-        // ->where(['polling_unit_name' => ''])
-        // ->all();
+        
+           $category =  (new \yii\db\Query())->from('lga')
+            ->join('LEFT JOIN', 'polling_unit', 'polling_unit.lga_id = lga.lga_id')
+            ->select(['lga.lga_id','lga.state_id','lga.lga_name','polling_unit.polling_unit_id'])
+            ->where(['polling_unit.polling_unit_id'=> null])
+            ->all();
+            
         return $this->render('pollingunit', [
             'model' => $model,
-            'category' =>  (new \yii\db\Query())->from('lga')->select(['lga_id','state_id','lga_name'])->all(),
+            'category' =>  $category
         ]);
     }
 
